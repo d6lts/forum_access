@@ -237,7 +237,7 @@ function _forum_access_forum_form(&$form, &$form_state, $is_container) {
       '!Content_Access' => l('Content Access', 'http://drupal.org/project/content_access'),
       '@Content_Access' => 'Content Access',
       '!ACL' => 'ACL',
-      '!module_list' => '<ul><li>'. implode($na_modules, '</li><li>') .'</li></ul>',
+      '!module_list' => '<ul><li>'. implode('</li><li>', $na_modules) .'</li></ul>',
     );
     $form['forum_access']['interference'][] = array(
       '#type' => 'item',
