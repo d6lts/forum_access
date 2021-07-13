@@ -260,12 +260,12 @@ function forum_access_update_6104() {
     $ret[] = update_sql("
       UPDATE {forum_access}
       SET grant_view = 0, grant_update = 0, grant_delete = 0
-      WHERE rid IN (". implode($admin_rids, ', ') .")
+      WHERE rid IN (". implode(', ', $admin_rids) .")
     ");
     $ret[] = update_sql("
       DELETE FROM {node_access}
       WHERE realm = 'forum_access'
-        AND gid IN (". implode($admin_rids, ', ') .")
+        AND gid IN (". implode(', ', $admin_rids) .")
     ");
   }
   return $ret;
@@ -281,7 +281,7 @@ function forum_access_update_6105() {
   $forums = _forum_access_update_table();
   $msg = t('Please see the <a href="@href">release notes for release 6.x-1.5 of the @Forum_Access module</a>.', array('@href' => 'http://drupal.org/node/936848', '@Forum_Access' => 'Forum Access'));
   if (!empty($forums)) {
-    $msg .= '<br />'. t('The following forums have been updated as explained in the release notes:') .'<ul><li>'. implode($forums, '</li><li>') .'</li></ul>';
+    $msg .= '<br />'. t('The following forums have been updated as explained in the release notes:') .'<ul><li>'. implode('</li><li>', $forums) .'</li></ul>';
   }
   drupal_set_message($msg, 'warning');
   return array();
